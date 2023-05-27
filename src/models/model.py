@@ -2,20 +2,20 @@ from .train import Model
 import requests
 from bs4 import BeautifulSoup
 
+
 class Chatbot(object):
     def __init__(self):
         self.model = Model()
-        self.model.load_model('models.pkl')
+        self.model.load_model("models.pkl")
         self.data = None
 
     def chat(self, msg):
         msg = msg.lower()
         return self.response(msg)
-        
 
     def response(self, sentence):
         predicted_words = self.model.predict(sentence)
-        if predicted_words :
+        if predicted_words:
             return " ".join(predicted_words)
         else:
             return self.query(sentence)

@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 import json
 
+
 class Model(object):
     def __init__(self):
         self.vocab = []
@@ -115,28 +116,29 @@ class Model(object):
 
     def sigmoid_derivative(self, x):
         return x * (1 - x)
-    
+
     def save_model(self, file_path):
         model_data = {
-            'vocab': self.vocab,
-            'word2index': self.word2index,
-            'index2word': self.index2word,
-            'weights_1': self.weights_1.tolist(),
-            'weights_2': self.weights_2.tolist()
+            "vocab": self.vocab,
+            "word2index": self.word2index,
+            "index2word": self.index2word,
+            "weights_1": self.weights_1.tolist(),
+            "weights_2": self.weights_2.tolist(),
         }
 
-        with open(file_path, 'wb') as file:
+        with open(file_path, "wb") as file:
             pickle.dump(model_data, file)
 
     def load_model(self, file_path):
-        with open(file_path, 'rb') as file:
+        with open(file_path, "rb") as file:
             model_data = pickle.load(file)
 
-        self.vocab = model_data['vocab']
-        self.word2index = model_data['word2index']
-        self.index2word = model_data['index2word']
-        self.weights_1 = np.array(model_data['weights_1'])
-        self.weights_2 = np.array(model_data['weights_2'])
+        self.vocab = model_data["vocab"]
+        self.word2index = model_data["word2index"]
+        self.index2word = model_data["index2word"]
+        self.weights_1 = np.array(model_data["weights_1"])
+        self.weights_2 = np.array(model_data["weights_2"])
+
 
 # train model
 # chatbot = Model()

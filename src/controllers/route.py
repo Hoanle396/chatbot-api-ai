@@ -14,4 +14,3 @@ def registryRouter(app, model):
         msg = request.json["msg"]
         chat = str(model.chat(msg))
         return {"user": "BOT", "text": chat, "createdAt": datetime.datetime.now()}, 200
-
