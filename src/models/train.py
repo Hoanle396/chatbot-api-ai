@@ -50,7 +50,7 @@ class Model(object):
         hidden_layer, output_layer = self.forward(input_vector)
 
         output_vector = output_layer.tolist()
-        predicted_indices = [i for i, v in enumerate(output_vector) if v > 0.5]
+        predicted_indices = [i for i, v in enumerate(output_vector) if v > 0.75]
         predicted_words = [self.index2word[index] for index in predicted_indices]
         return predicted_words
 
